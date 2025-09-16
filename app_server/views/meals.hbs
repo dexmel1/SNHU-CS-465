@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!-- Website template by freewebsitetemplates.com -->
 <html>
 <head>
@@ -9,17 +9,17 @@
 <body>
     <div id="background">
         <div id="page">
-            {{> header travel="travel" }}
+            {{> header meals="meals"}}
             <div id="contents">
                 <div class="box">
                     <div>
                         <div class="body">
-                            <h1>Travel</h1>
-                            <ul id="sites">
-                                {{#each trips}}
+                            <h1>Meals</h1>
+                            <ul id="foods">
+                                {{#each meals}}
                                 <li>
-                                    <a href="/travel"><img src="images//{{this.image}}" alt="Img"></a>
-                                    <h2><a href="/travel">{{this.name}}</a></h2>
+                                    <a href="/meals"><img src="images//{{this.image}}" alt="Img"></a>
+                                    <h2><a href="/meals">{{this.name}}</a></h2>
                                     {{{this.description}}}
                                 </li>
                                 {{/each}}
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
+        {{> footer meals="meals"}}
     </div>
-    {{> footer travel="travel"}}
 </body>
 </html>

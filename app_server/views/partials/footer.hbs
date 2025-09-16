@@ -1,32 +1,65 @@
 <div id="footer">
-			<div>
-				<ul class="navigation">
-					<li>
-						<a href="index.html">Home</a>
-					</li>
-					<li class="active">
-						<a href="/travel">Travel</a>
-					</li>
-					<li>
-						<a href="rooms.html">Rooms</a>
-					</li>
-					<li>
-						<a href=“meals.html">Meals</a>
-					</li>
-					<li>
-						<a href="news.html">News</a>
-					</li>
-					<li>
-						<a href="about.html">About</a>
-					</li>
-					<li>
-						<a href="contact.html">Contact</a>
-					</li>
-				</ul>
-				<div id="connect">
-					<a href="http://pinterest.com/fwtemplates/" target="_blank" class="pinterest"></a> <a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a> <a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a> <a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a>
-				</div>
-			</div>
-			<p>
-				© 2023 by BHACCASYONIZTAS BEACH RESORT. All Rights Reserved
-			</p>
+    <div id="navigation">
+        <ul>
+            {{#if home}}
+            <li class="selected">
+                {{else}}
+            <li>
+                {{/if}}
+                <a href="/index">Home</a>
+            </li>
+
+            {{#if travel}}
+            <li class="selected">
+                {{else}}
+            <li>
+                {{/if}}
+                <a href="/travel">Travel</a>
+            </li>
+
+            {{#if rooms}}
+            <li class="selected">
+                {{else}}
+            <li>
+                {{/if}}
+                <a href="/rooms">Rooms</a>
+            </li>
+
+            {{#if meals}}
+            <li class="selected">
+                {{else}}
+            <li>
+                {{/if}}
+                <a href="/meals">Meals</a>
+            </li>
+
+            {{#if news}}
+            <li class="selected">
+                {{else}}
+            <li>
+                {{/if}}
+                <a href="/news">News</a>
+            </li>
+
+            {{#if about}}
+            <li class="selected">
+                {{else}}
+            <li>
+                {{/if}}
+                <a href="/about">About</a>
+            </li>
+
+            {{#if contact}}
+            <li class="selected">
+                {{else}}
+            <li>
+                {{/if}}
+                <a href="/contact">Contact</a>
+            </li>
+
+        </ul>
+    </div>
+    <p>
+        © 2023 by BHACCASYONIZTAS BEACH RESORT. All Rights Reserved
+    </p>
+</div>
