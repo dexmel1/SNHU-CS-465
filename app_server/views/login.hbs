@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  {{> header }}
+
+  <main class="auth-container">
+    <h1 class="auth-title">Login</h1>
+
+    {{#if error}}<p class="auth-error">{{error}}</p>{{/if}}
+
+    <form method="post" action="/login" class="auth-form">
+      <label>Email:</label>
+      <input type="email" name="email" required />
+
+      <label>Password:</label>
+      <input type="password" name="password" required />
+
+      <button type="submit" class="btn-primary">Login</button>
+      <div class="auth-links">
+        <a href="#">Forgot password?</a>
+      </div>
+    </form>
+  </main>
+
+  {{> footer }}
+</body>
+</html>

@@ -1,65 +1,29 @@
-<div id="header">
-    <div id="logo">
-        <a href="/index"><img src="images/logo.png" alt="LOGO" height="100" width="200"></a>
+<header>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="/index" class="navbar-logo"><img src="images/logo.png" alt="LOGO"></a>
     </div>
-    <div id="navigation">
-        <ul>
-            {{#if home}}
-            <li class="selected">
-                {{else}}
-            <li>
-                {{/if}}
-                <a href="/index">Home</a>
-            </li>
 
-            {{#if travel}}
-            <li class="selected">
-                {{else}}
-            <li>
-                {{/if}}
-                <a href="/travel">Travel</a>
-            </li>
+    <ul class="navbar-links">
+      <li><a href="/travel">Travel</a></li>
+      <li><a href="/news">News</a></li>
 
-            {{#if rooms}}
-            <li class="selected">
-                {{else}}
-            <li>
-                {{/if}}
-                <a href="/rooms">Rooms</a>
-            </li>
+      {{#if loggedIn}}
+        <li><a href="/reservations">Reservations</a></li>
+      {{/if}}
 
-            {{#if meals}}
-            <li class="selected">
-                {{else}}
-            <li>
-                {{/if}}
-                <a href="/meals">Meals</a>
-            </li>
+      <li><a href="http://localhost:4200" target="_blank" rel="noopener">Admin</a></li>
+    </ul>
 
-            {{#if news}}
-            <li class="selected">
-                {{else}}
-            <li>
-                {{/if}}
-                <a href="/news">News</a>
-            </li>
+    <ul class="navbar-actions">
+      <li><a href="/checkout">🛒 Checkout</a></li>
 
-            {{#if about}}
-            <li class="selected">
-                {{else}}
-            <li>
-                {{/if}}
-                <a href="/about">About</a>
-            </li>
-
-            {{#if contact}}
-            <li class="selected">
-                {{else}}
-            <li>
-                {{/if}}
-                <a href="/contact">Contact</a>
-            </li>
-
-        </ul>
-    </div>
-</div>
+      {{#if loggedIn}}
+        <li><a href="/logout">Logout</a></li>
+      {{else}}
+        <li><a href="/login">👤 Login</a></li>
+        <li><a href="/register">Register</a></li>
+      {{/if}}
+    </ul>
+  </nav>
+</header>

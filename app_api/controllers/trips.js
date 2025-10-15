@@ -55,7 +55,8 @@ const tripsAddTrip = async (req, res) => {
         resort: req.body.resort,
         perPerson: req.body.perPerson,
         image: req.body.image,
-        description: req.body.description
+        description: req.body.description,
+        category: req.body.category || 'Beaches'
     });
 
     const q = await newTrip.save();
@@ -86,7 +87,8 @@ const tripsUpdateTrip = async (req, res) => {
         resort: req.body.resort,
         perPerson: req.body.perPerson,
         image: req.body.image,
-        description: req.body.description
+        description: req.body.description,
+        category: req.body.category
     }).exec();
         if(!q)
         { // Database returned no data

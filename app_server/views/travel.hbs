@@ -15,21 +15,89 @@
                     <div>
                         <div class="body">
                             <h1>Travel</h1>
-                            <ul id="sites">
-                                {{#each trips}}
-                                <li>
-                                    <a href="/api/trips/{{this.code}}"><img src="images//{{this.image}}" alt="Img"></a>
-                                    <h2><a href="/travel">{{this.name}}</a></h2>
-                                    {{{this.description}}}
-                                </li>
-                                {{/each}}
-                            </ul>
+                            <div class="travel-actions">
+                                <input type="text" id="searchInput" placeholder="Search Travel">
+                                <button class="btn-primary">Add a Trip</button>
+                                </div>
+
+                                <div class="trip-tabs">
+                                <button class="tab active" data-category="Beaches">Beaches</button>
+                                <button class="tab" data-category="Cruises">Cruises</button>
+                                <button class="tab" data-category="Mountains">Mountains</button>
+                                </div>
+
+                                <table class="trip-table" id="tripTable">
+                                <thead>
+                                    <tr>
+                                    <th>ID</th><th>Name</th><th>Length</th><th>Start</th>
+                                    <th>Resort</th><th>Per Person</th><th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each trips}}
+                                    <tr data-category="{{this.category}}">
+                                        <td>{{this.code}}</td>
+                                        <td>{{this.name}}</td>
+                                        <td>{{this.length}}</td>
+                                        <td>{{this.start}}</td>
+                                        <td>{{this.resort}}</td>
+                                        <td>${{this.perPerson}}</td>
+                                        <td>
+                                        <a href="/admin/edit/{{this.code}}" class="btn-small">Edit</a>
+                                        <a href="#" class="btn-small btn-danger">X</a>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                                </table>
+                                <a href="/index" class="back-link">&lt; Back to Home</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const tabs = document.querySelectorAll('.tab');
+        const rows = document.querySelectorAll('#tripTable tbody tr');
+        const searchInput = document.getElementById('searchInput');
+
+        function applyFilter(category, term = '') {
+            const q = term.toLowerCase().trim();
+
+            rows.forEach(r => {
+            const matchesCategory = category === 'All' || r.dataset.category === category;
+            const matchesSearch = r.textContent.toLowerCase().includes(q);
+            r.style.display = (matchesCategory && matchesSearch) ? '' : 'none';
+            });
+        }
+
+        // click-to-filter
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            applyFilter(tab.dataset.category, searchInput?.value || '');
+            });
+        });
+
+        // search-to-filter
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+            const activeTab = document.querySelector('.tab.active');
+            const category = activeTab ? activeTab.dataset.category : 'All';
+            applyFilter(category, searchInput.value);
+            });
+        }
+
+        // apply filter once on initial load using the active tab
+        const initialTab = document.querySelector('.tab.active');
+        const initialCategory = initialTab ? initialTab.dataset.category : 'All';
+        applyFilter(initialCategory);
+        });
+    </script>
+
     {{> footer travel="travel"}}
 </body>
 </html>

@@ -82,6 +82,16 @@
                 </div>
             </div>
         </div>
+        
+        <div class="form-group">
+            <label>Category:</label>
+            <input type="text" formControlName="category" placeholder="Category" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['category'].errors }">
+            <div *ngIf="submitted && f['category'].errors">
+                <div *ngIf="f['category'].errors?.['required']">
+                    Category is required
+                </div>
+            </div>
+        </div>
         <button type="submit" class="btn btn-info">Save</button>
     </form>
 </div>

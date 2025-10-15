@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  {{> header }}
+
+  <main class="auth-container">
+    <h1 class="auth-title">Create an Account</h1>
+
+    {{#if errors}}
+      <ul class="auth-error">
+        {{#each errors}}<li>{{this}}</li>{{/each}}
+      </ul>
+    {{/if}}
+
+    <form method="post" action="/register" class="auth-form">
+      <label>Name</label>
+      <input type="text" name="name" value="{{name}}" required />
+
+      <label>Email</label>
+      <input type="email" name="email" value="{{email}}" required />
+
+      <label>Password</label>
+      <input type="password" name="password" required />
+
+      <label>Confirm Password</label>
+      <input type="password" name="confirm" required />
+
+      <button type="submit" class="btn-primary">Create Account</button>
+      <div class="auth-links">
+        <a href="/login">Already have an account? Login</a>
+      </div>
+    </form>
+  </main>
+
+  {{> footer }}
+</body>
+</html>
