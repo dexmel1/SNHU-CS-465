@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const jwt = require('jsonwebtoken'); // Enable JSON Web Tokens
 
 //import the controllers to be routed
 const tripsController = require("../controllers/trips");
@@ -19,5 +18,6 @@ router
 router
     .route('/trips/:tripCode')
     .get(tripsController.tripsFindByCode)
-    .put(authenticateJWT, tripsController.tripsUpdateTrip);
+    .put(authenticateJWT, tripsController.tripsUpdateTrip)
+    .delete(authenticateJWT, tripsController.tripsDeleteTrip);
 module.exports = router;
